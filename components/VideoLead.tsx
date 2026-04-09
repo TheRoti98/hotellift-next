@@ -46,7 +46,7 @@ export function VideoLead() {
           </Reveal>
 
           {/* MOCKUP - mobile: 2nd, desktop: col 2 row 1+2 */}
-          <Reveal delay={120} className="order-2 md:col-start-2 md:row-start-1 md:row-span-2">
+          <Reveal delay={120} className="order-2 md:col-start-2 md:row-start-1">
             <div
               className="relative rounded-2xl overflow-hidden shadow-2xl"
               style={{ border: '1px solid rgba(255,255,255,0.08)' }}
