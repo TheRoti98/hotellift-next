@@ -76,22 +76,17 @@ export function VideoLead() {
               {/* Thumbnail bg */}
               <div
                 className="relative w-full"
-                style={{ paddingTop: '56.25%', background: 'linear-gradient(135deg, #0d0018 0%, #1a0035 50%, #05000a 100%)' }}
+                style={{ paddingTop: '56.25%' }}
               >
-                {/* Gradient noise texture */}
-                <div
-                  className="absolute inset-0 opacity-30"
-                  style={{ background: 'radial-gradient(ellipse 80% 60% at 30% 40%, rgba(60,0,128,0.6), transparent), radial-gradient(ellipse 60% 80% at 80% 70%, rgba(0,187,245,0.15), transparent)' }}
+                {/* Photo */}
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src="https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=1200&q=80"
+                  alt="Hotel VSL"
+                  className="absolute inset-0 w-full h-full object-cover"
                 />
-
-                {/* Grid lines subtle */}
-                <div
-                  className="absolute inset-0 opacity-[0.04]"
-                  style={{
-                    backgroundImage: 'linear-gradient(rgba(255,255,255,1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,1) 1px, transparent 1px)',
-                    backgroundSize: '40px 40px',
-                  }}
-                />
+                {/* Dark overlay */}
+                <div className="absolute inset-0" style={{ background: 'rgba(5,0,10,0.45)' }} />
 
                 {/* Play button */}
                 <div className="absolute inset-0 flex items-center justify-center">
