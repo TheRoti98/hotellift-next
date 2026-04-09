@@ -23,7 +23,7 @@ export function VideoLead() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16 items-center">
 
           {/* LEFT - text + form */}
-          <Reveal>
+          <Reveal className="order-2 md:order-1">
             <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-violet/20 bg-violet/[0.06] mb-7">
               <span className="w-1.5 h-1.5 rounded-full bg-violet animate-pulse" />
               <span className="text-[11px] font-black uppercase tracking-[0.14em] text-violet/70">
@@ -44,19 +44,26 @@ export function VideoLead() {
               12 minut. Konkretna lista błędów, które większość hoteli popełnia — i dlaczego kosztują Cię dziesiątki tysięcy złotych rocznie.
             </p>
 
-            <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-3">
-              <input
-                type="email"
-                required
-                value={email}
-                onChange={e => setEmail(e.target.value)}
-                placeholder="Twój e-mail"
-                className="flex-1 bg-white border border-gray1 rounded-xl text-text-main placeholder:text-gray3 px-5 py-4 text-[15px] focus:outline-none focus:border-violet/40 transition-colors"
-              />
+            <form onSubmit={handleSubmit} className="flex flex-col gap-3">
+              <div className="flex flex-col sm:flex-row gap-3">
+                <input
+                  type="email"
+                  required
+                  value={email}
+                  onChange={e => setEmail(e.target.value)}
+                  placeholder="Twój e-mail"
+                  className="flex-1 bg-white border border-gray1 rounded-xl text-text-main placeholder:text-gray3 px-5 py-4 text-[15px] focus:outline-none focus:border-violet/40 transition-colors"
+                />
+                <input
+                  type="tel"
+                  placeholder="Numer telefonu"
+                  className="flex-1 bg-white border border-gray1 rounded-xl text-text-main placeholder:text-gray3 px-5 py-4 text-[15px] focus:outline-none focus:border-violet/40 transition-colors"
+                />
+              </div>
               <button
                 type="submit"
                 disabled={loading}
-                className="gradient-btn font-bold text-[15px] px-7 py-4 rounded-xl shadow-lg shadow-brand-green/10 whitespace-nowrap disabled:opacity-60 transition-opacity"
+                className="gradient-btn font-bold text-[15px] px-7 py-4 rounded-xl shadow-lg shadow-brand-green/10 disabled:opacity-60 transition-opacity"
               >
                 {loading ? 'Chwila...' : 'Obejrzyj za darmo →'}
               </button>
@@ -68,7 +75,7 @@ export function VideoLead() {
           </Reveal>
 
           {/* RIGHT - video mockup */}
-          <Reveal delay={120}>
+          <Reveal delay={120} className="order-1 md:order-2">
             <div
               className="relative rounded-2xl overflow-hidden shadow-2xl"
               style={{ border: '1px solid rgba(255,255,255,0.08)' }}
