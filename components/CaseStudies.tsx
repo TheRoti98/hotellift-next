@@ -95,29 +95,6 @@ export function CaseStudies() {
           ))}
         </div>
 
-        {/* Client logos */}
-        <Reveal delay={100}>
-          <div className="mt-14">
-            <div className="flex flex-wrap justify-center items-center gap-10 md:gap-16">
-              {[
-                { src: '/logo-skipper.png', alt: 'Hotel Skipper' },
-                { src: '/logo-kadyny.jpg', alt: 'Kadyny Folwark Hotel & SPA' },
-                { src: '/logo-mamuszki.png', alt: 'Mamuszki 15' },
-                { src: '/logo-platan.png', alt: 'Hotel Platan' },
-              ].map((logo) => (
-                <div
-                  key={logo.alt}
-                  className="relative h-20 w-48 transition-all duration-300 cursor-default"
-                  style={{ filter: 'grayscale(1)', opacity: 0.55 }}
-                  onMouseEnter={e => { (e.currentTarget as HTMLDivElement).style.filter = 'grayscale(0)'; (e.currentTarget as HTMLDivElement).style.opacity = '1' }}
-                  onMouseLeave={e => { (e.currentTarget as HTMLDivElement).style.filter = 'grayscale(1)'; (e.currentTarget as HTMLDivElement).style.opacity = '0.55' }}
-                >
-                  <Image src={logo.src} alt={logo.alt} fill className="object-contain" />
-                </div>
-              ))}
-            </div>
-          </div>
-        </Reveal>
 
       </div>
     </section>
