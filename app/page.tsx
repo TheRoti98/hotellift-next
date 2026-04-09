@@ -7,12 +7,10 @@ import { ResultsBand } from '@/components/ResultsBand'
 import { CaseStudies } from '@/components/CaseStudies'
 import { SolutionAlt } from '@/components/SolutionAlt'
 import { ProcessAlt } from '@/components/ProcessAlt'
-import { Team } from '@/components/Team'
 import { TeamAlt } from '@/components/TeamAlt'
 
 import { Packages } from '@/components/Packages'
 import { FAQ } from '@/components/FAQ'
-import { CTASection } from '@/components/CTASection'
 import { Footer } from '@/components/Footer'
 
 export default function Page() {
@@ -28,11 +26,9 @@ export default function Page() {
         <CaseStudies />
         <SolutionAlt />
         <ProcessAlt />
-        <Team />
         <TeamAlt />
         <Packages />
         <FAQ />
-        <CTASection />
       </main>
       <Footer />
     </>
