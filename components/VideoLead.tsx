@@ -81,7 +81,7 @@ export function VideoLead() {
                 {/* Photo */}
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
-                  src="https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=1200&q=80"
+                  src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=1200&q=80"
                   alt="Hotel VSL"
                   className="absolute inset-0 w-full h-full object-cover"
                 />
