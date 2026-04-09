@@ -8,9 +8,9 @@ import { CaseStudies } from '@/components/CaseStudies'
 import { SolutionAlt } from '@/components/SolutionAlt'
 import { ProcessAlt } from '@/components/ProcessAlt'
 import { TeamAlt } from '@/components/TeamAlt'
-
-import { Packages } from '@/components/Packages'
+import { VideoLead } from '@/components/VideoLead'
 import { FAQ } from '@/components/FAQ'
+import { CTASection } from '@/components/CTASection'
 import { Footer } from '@/components/Footer'
 
 export default function Page() {
@@ -27,8 +27,9 @@ export default function Page() {
         <SolutionAlt />
         <ProcessAlt />
         <TeamAlt />
-        <Packages />
+        <VideoLead />
         <FAQ />
+        <CTASection />
       </main>
       <Footer />
     </>
