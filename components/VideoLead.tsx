@@ -106,8 +106,8 @@ export function VideoLead() {
             </div>
           </Reveal>
 
-          {/* FORM - mobile: 3rd, desktop: col 1 row 2 - centered */}
-          <Reveal delay={80} className="order-3 md:col-start-1 md:row-start-2 flex justify-center">
+          {/* FORM - mobile: 3rd, desktop: full width row 2 - centered */}
+          <Reveal delay={80} className="order-3 md:col-span-2 md:row-start-2 flex justify-center">
             <div className="w-full max-w-sm">
               <form onSubmit={handleSubmit} className="flex flex-col gap-3">
                 <input
