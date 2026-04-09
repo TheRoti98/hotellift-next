@@ -1,0 +1,49 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  body {
+    @apply text-text-main bg-white;
+  }
+}
+
+@layer utilities {
+  .gradient-text {
+    @apply bg-brand-gradient bg-clip-text text-transparent;
+  }
+
+  .gradient-btn {
+    @apply bg-brand-gradient text-midnight font-bold transition-opacity hover:opacity-90;
+  }
+
+  .section-tag {
+    @apply text-[11px] font-bold uppercase tracking-[0.18em] text-violet/70 mb-3 flex items-center gap-2;
+  }
+
+  .section-tag::before {
+    content: '';
+    @apply inline-block w-5 h-px bg-violet/40;
+  }
+}
+
+/* Ticker animation */
+.ticker-wrap {
+  overflow: hidden;
+}
+
+.ticker-track {
+  display: flex;
+  width: max-content;
+  animation: ticker 32s linear infinite;
+}
+
+@keyframes ticker {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
