@@ -19,14 +19,12 @@ export function VideoLead() {
 
   return (
     <section className="bg-offwhite py-24 md:py-32 relative overflow-hidden">
-      <div className="max-w-7xl mx-auto px-5 md:px-8">
+      <div className="max-w-6xl mx-auto px-5 md:px-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 md:grid-rows-[auto_auto] gap-x-16 gap-y-6">
 
-        {/* Mobile: stacked | Desktop: 3 columns */}
-        <div className="flex flex-col md:grid md:grid-cols-[1fr_360px_1fr] md:gap-10 md:items-center gap-8">
-
-          {/* LEFT - text */}
-          <Reveal className="order-1">
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-violet/20 bg-violet/[0.06] mb-6">
+          {/* TEXT - mobile: 1st, desktop: col 1 row 1 */}
+          <Reveal className="order-1 md:col-start-1 md:row-start-1">
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-violet/20 bg-violet/[0.06] mb-7">
               <span className="w-1.5 h-1.5 rounded-full bg-violet animate-pulse" />
               <span className="text-[11px] font-black uppercase tracking-[0.14em] text-violet/70">
                 Bezpłatne wideo
@@ -35,10 +33,10 @@ export function VideoLead() {
 
             <h2
               className="font-black text-midnight leading-tight tracking-tight mb-5"
-              style={{ fontSize: 'clamp(1.8rem, 2.8vw, 2.6rem)' }}
+              style={{ fontSize: 'clamp(1.8rem, 3.5vw, 2.8rem)' }}
             >
               Dowiedz się co dokładnie<br />
-              <span className="gradient-text">nie działa<br />w Twoim hotelu</span><br />
+              <span className="gradient-text">nie działa w Twoim hotelu</span><br />
               i jak to zmienić.
             </h2>
 
@@ -47,49 +45,12 @@ export function VideoLead() {
             </p>
           </Reveal>
 
-          {/* CENTER - form */}
-          <Reveal delay={80} className="order-3 md:order-2">
-            <div className="bg-white border border-gray1 rounded-2xl p-6 shadow-xl shadow-violet/5">
-              <p className="text-[11px] font-black uppercase tracking-[0.14em] text-text-main/35 mb-1">Krok 1 z 1</p>
-              <h3 className="font-black text-midnight text-[1.2rem] leading-tight mb-1">Zostaw kontakt</h3>
-              <p className="text-text-main/45 text-[13px] mb-5">Wyślemy Ci link do wideo na maila.</p>
-
-              <form onSubmit={handleSubmit} className="flex flex-col gap-3">
-                <input
-                  type="email"
-                  required
-                  value={email}
-                  onChange={e => setEmail(e.target.value)}
-                  placeholder="Twój e-mail"
-                  className="w-full bg-offwhite border border-gray1 rounded-xl text-text-main placeholder:text-gray3 px-4 py-3.5 text-[14px] focus:outline-none focus:border-violet/40 transition-colors"
-                />
-                <input
-                  type="tel"
-                  placeholder="Numer telefonu"
-                  className="w-full bg-offwhite border border-gray1 rounded-xl text-text-main placeholder:text-gray3 px-4 py-3.5 text-[14px] focus:outline-none focus:border-violet/40 transition-colors"
-                />
-                <button
-                  type="submit"
-                  disabled={loading}
-                  className="gradient-btn font-bold text-[15px] py-4 rounded-xl shadow-lg shadow-brand-green/10 disabled:opacity-60 transition-opacity mt-1"
-                >
-                  {loading ? 'Chwila...' : 'Obejrzyj za darmo →'}
-                </button>
-              </form>
-
-              <p className="text-center text-text-main/25 text-[11px] mt-3">
-                Jeden mail z linkiem. Zero spamu.
-              </p>
-            </div>
-          </Reveal>
-
-          {/* RIGHT - mockup */}
-          <Reveal delay={140} className="order-2 md:order-3">
+          {/* MOCKUP - mobile: 2nd, desktop: col 2 row 1+2 */}
+          <Reveal delay={120} className="order-2 md:col-start-2 md:row-start-1 md:row-span-2">
             <div
               className="relative rounded-2xl overflow-hidden shadow-2xl"
               style={{ border: '1px solid rgba(255,255,255,0.08)' }}
             >
-              {/* Thumbnail */}
               <div className="relative w-full" style={{ paddingTop: '56.25%' }}>
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
@@ -99,24 +60,21 @@ export function VideoLead() {
                 />
                 <div className="absolute inset-0" style={{ background: 'rgba(5,0,10,0.45)' }} />
 
-                {/* Play button */}
                 <div className="absolute inset-0 flex items-center justify-center">
                   <div
-                    className="w-14 h-14 rounded-full flex items-center justify-center shadow-2xl"
-                    style={{ background: 'linear-gradient(135deg, #03ef23, #00bbf5)', boxShadow: '0 0 32px rgba(3,239,35,0.35)' }}
+                    className="w-16 h-16 rounded-full flex items-center justify-center shadow-2xl"
+                    style={{ background: 'linear-gradient(135deg, #03ef23, #00bbf5)', boxShadow: '0 0 40px rgba(3,239,35,0.35)' }}
                   >
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" style={{ marginLeft: '3px' }}>
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" style={{ marginLeft: '3px' }}>
                       <path d="M6 4l14 8-14 8V4z" fill="#05000a"/>
                     </svg>
                   </div>
                 </div>
 
-                {/* Duration */}
                 <div className="absolute bottom-3 right-3 px-2.5 py-1 rounded-md text-[11px] font-bold text-white" style={{ background: 'rgba(0,0,0,0.7)' }}>
                   12:00
                 </div>
 
-                {/* Title overlay */}
                 <div className="absolute bottom-0 left-0 right-0 p-4 pt-10" style={{ background: 'linear-gradient(to top, rgba(5,0,10,0.9), transparent)' }}>
                   <p className="text-white/40 text-[10px] uppercase tracking-widest mb-1">Łukasz Falba & Hubert Hurban</p>
                   <p className="text-white font-bold text-[13px] leading-snug">
@@ -126,7 +84,6 @@ export function VideoLead() {
                 </div>
               </div>
 
-              {/* Bullet points */}
               <div className="bg-midnight px-5 py-4 flex flex-col gap-2.5">
                 {[
                   'Dlaczego reklamy nie przynoszą rezerwacji',
@@ -146,6 +103,37 @@ export function VideoLead() {
                   </div>
                 ))}
               </div>
+            </div>
+          </Reveal>
+
+          {/* FORM - mobile: 3rd, desktop: col 1 row 2 - centered */}
+          <Reveal delay={80} className="order-3 md:col-start-1 md:row-start-2 flex justify-center">
+            <div className="w-full max-w-sm">
+              <form onSubmit={handleSubmit} className="flex flex-col gap-3">
+                <input
+                  type="email"
+                  required
+                  value={email}
+                  onChange={e => setEmail(e.target.value)}
+                  placeholder="Twój e-mail"
+                  className="w-full bg-white border border-gray1 rounded-xl text-text-main placeholder:text-gray3 px-5 py-4 text-[15px] focus:outline-none focus:border-violet/40 transition-colors"
+                />
+                <input
+                  type="tel"
+                  placeholder="Numer telefonu"
+                  className="w-full bg-white border border-gray1 rounded-xl text-text-main placeholder:text-gray3 px-5 py-4 text-[15px] focus:outline-none focus:border-violet/40 transition-colors"
+                />
+                <button
+                  type="submit"
+                  disabled={loading}
+                  className="gradient-btn font-bold text-[15px] py-4 rounded-xl shadow-lg shadow-brand-green/10 disabled:opacity-60 transition-opacity"
+                >
+                  {loading ? 'Chwila...' : 'Obejrzyj za darmo →'}
+                </button>
+              </form>
+              <p className="text-text-main/30 text-[12px] mt-3 text-center">
+                Jeden mail z linkiem. Zero spamu.
+              </p>
             </div>
           </Reveal>
 
