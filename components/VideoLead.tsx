@@ -164,10 +164,8 @@ export function VideoLead() {
             >
               ✕
             </button>
-            <p className="text-[11px] font-bold uppercase tracking-[0.14em] text-white/30 mb-2">Bezpłatne wideo</p>
             <h3 className="font-black text-white text-xl leading-tight mb-6">
-              Podaj dane,<br />
-              <span className="gradient-text">odbierz dostęp</span>
+              Odbierz dostęp <span className="gradient-text">do nagrania</span>
             </h3>
             <form onSubmit={handleSubmit} className="flex flex-col gap-3">
               <input

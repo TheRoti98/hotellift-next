@@ -6,7 +6,7 @@ import { Reveal } from './Reveal'
 const faqs = [
   {
     q: 'Czy to nie będzie kolejna agencja, która obiecuje cuda?',
-    a: 'Jesteśmy na rynku od 2014 roku. Mamy klientów którzy są z nami od ponad 12 lat. Nie pracujemy z każdym - mamy ograniczoną liczbę obiektów w obsłudze, żeby żaden klient nie czuł się pominięty. Pokażemy Ci screenshoty z paneli, wyniki kampanii, opinie klientów - nie slajdy z obietnicami.',
+    a: 'Jesteśmy na rynku od 2014 roku. Mamy klientów którzy są z nami od ponad 12 lat. Nie pracujemy z każdym - mamy ograniczoną liczbę obiektów w obsłudze, żeby żaden klient nie czuł się pominięty.',
   },
   {
     q: 'Mam mały obiekt - pensjonat / aparthotel - czy to ma sens?',
@@ -23,10 +23,6 @@ const faqs = [
   {
     q: 'Co konkretnie oznacza "AI w marketingu hotelu"?',
     a: 'Praktyczne narzędzia, nie buzzword. Opisy pokoi, oferty specjalne, automatyczne follow-upy po rezerwacji, analiza konkurencji, przygotowanie contentu - rzeczy które Twój zespół robi godzinami, AI robi w minutach. Uczymy jak tego używać, nie zostawiamy z narzędziem bez instrukcji.',
-  },
-  {
-    q: 'Czy wymagana jest umowa na rok?',
-    a: 'Żaden pakiet nie wymaga umowy rocznej. Zostajemy razem bo współpraca przynosi wyniki - nie dlatego że jesteś do niej zobowiązany.',
   },
 ]
 
