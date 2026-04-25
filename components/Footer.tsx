@@ -11,8 +11,8 @@ export function Footer() {
           <a href="https://4webzones.pl/polityka-prywatnosci/" className="text-white/25 text-[12px] hover:text-white/50 transition-colors">
             Polityka prywatności
           </a>
-          <a href="mailto:start@4webzones.pl" className="text-white/25 text-[12px] hover:text-white/50 transition-colors">
-            start@4webzones.pl
+          <a href="mailto:kontakt@4wz.pl" className="text-white/25 text-[12px] hover:text-white/50 transition-colors">
+            kontakt@4wz.pl
           </a>
         </div>
 
