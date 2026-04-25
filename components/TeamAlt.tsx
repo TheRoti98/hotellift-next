@@ -5,31 +5,31 @@ const members = [
   {
     name: 'Łukasz Falba',
     photo: '/falba.png',
-    role: 'Performance Marketing',
-    bigNum: '20M+',
-    bigLabel: 'zł przychodów dla hoteli',
-    voice: 'Nauczyłem się reklamy na własnych pieniądzach. Twoje oszczędzam.',
+    role: 'Strategy & Performance',
+    bigNum: '100M+',
+    bigLabel: 'przychodu dla klientów',
+    voice: 'Rozwiązuję problemy, których nie widać gołym okiem.',
     stats: [
-      { num: '50+', label: 'hoteli' },
-      { num: '8 lat', label: 'doświad.' },
-      { num: '5', label: 'rynków' },
+      { num: '10 lat', label: 'doświad.' },
+      { num: '50+', label: 'obiektów' },
+      { num: '2000h+', label: 'szkoleń' },
     ],
-    bio: '8 lat wyłącznie w reklamach hotelowych. Polska, UK, Niemcy, Brazylia, Afryka Zachodnia. Zna hotel jako biznes zanim zacznie rozmawiać o reklamach.',
+    bio: 'Pozyskiwałem leady i budowałem sprzedaż w Hollywood, Poznaniu i Pcimiu Dolnym, ale także w Niemczech, Wielkiej Brytanii, Wybrzeżu Kości Słoniowej, Togo, Senegalu, Brazylii i innych krajach. Budowałem lub pomagałem budować kilka agencji, uratowałem kilka biznesów, a tysiące zoptymalizowałem. Dzięki kilku tysiącom godzin spędzonym na sali szkoleniowej mogę efektywnie przekazywać klientom wiedzę, żeby nasza współpraca nie ograniczała się jedynie do raportów i klikania reklam.',
     tags: ['Google Ads', 'Meta Ads', 'HORECA'],
   },
   {
     name: 'Hubert Hurban',
     photo: '/hubi2.jpg',
-    role: 'Content & AI Strategy',
-    bigNum: '8M+',
-    bigLabel: 'zasięgu miesięcznie własne kanały',
-    voice: 'Buduję content który sprzedaje pokoje. Nie tylko zbiera lajki.',
+    role: 'Content & AI',
+    bigNum: '10M+',
+    bigLabel: 'zasięgu na Instagramie',
+    voice: 'Skupiam się na content marketingu, wykorzystaniu AI i projektowaniu efektywnych procesów.',
     stats: [
       { num: '10 lat', label: 'doświad.' },
       { num: '8 zł', label: 'lead' },
       { num: '100+', label: 'auto AI' },
     ],
-    bio: 'Na własnych kanałach generuje 8M+ zasięgu — więc wie co działa, nie zgaduje. Automatyzacje AI wdrożone w dziesiątkach hoteli.',
+    bio: 'Na swoich własnych social mediach generuję miesięcznie ponad 10 mln zasięgu bez dużego konta i wielkiej rozpoznawalności. Moje treści pomogą Ci przede wszystkim sprzedać. To nie bajki o viralowych zasięgach, a realne wyniki, które zobaczysz u siebie na koncie. Projektowałem automatyzacje, które realnie oszczędzają dziennie setki, tysiący, a często nawet dziesiątki tysięcy złotych.',
     tags: ['Content', 'AI', 'Social Media'],
   },
 ]
@@ -112,7 +112,7 @@ export function TeamAlt() {
                 {/* Voice */}
                 <div className="rounded-2xl p-6 flex items-center col-span-2" style={{ gridColumn: '2 / 4', gridRow: '2', background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.06)' }}>
                   <p className="font-bold text-white italic leading-snug" style={{ fontSize: 'clamp(0.95rem, 1.5vw, 1.1rem)' }}>
-                    &ldquo;{m.voice}&rdquo;
+                    {m.voice}
                   </p>
                 </div>
 

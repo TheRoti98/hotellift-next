@@ -2,13 +2,9 @@ export function Footer() {
   return (
     <footer className="bg-midnight border-t border-white/[0.06] py-6">
       <div className="max-w-7xl mx-auto px-5 md:px-8 flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
-        <div className="flex items-center gap-2.5">
-          <div className="w-6 h-6 rounded bg-brand-gradient flex items-center justify-center flex-shrink-0">
-            <span className="text-midnight font-black text-[9px]">4W</span>
-          </div>
-          <span className="text-white/40 text-[13px] font-medium">
-            4WebZones <span className="gradient-text font-bold">HORECA</span>
-          </span>
+        <div className="flex items-center opacity-40">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src="/logo-white.svg" alt="4WebZones" className="h-5 w-auto" />
         </div>
 
         <div className="flex flex-wrap gap-x-5 gap-y-1">

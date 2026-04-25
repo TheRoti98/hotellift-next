@@ -29,14 +29,9 @@ export function Nav() {
     >
       <div className="max-w-7xl mx-auto px-5 md:px-8 h-[70px] flex items-center justify-between">
         {/* Logo */}
-        <Link href="#" className="flex items-center gap-2.5 group">
-          <div className="w-8 h-8 rounded bg-brand-gradient flex items-center justify-center flex-shrink-0">
-            <span className="text-midnight font-black text-xs">4W</span>
-          </div>
-          <span className="font-bold text-white text-[15px] tracking-tight">
-            4WebZones{' '}
-            <span className="gradient-text font-black">HORECA</span>
-          </span>
+        <Link href="#" className="flex items-center group">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src="/logo-white.svg" alt="4WebZones" className="h-7 w-auto" />
         </Link>
 
         {/* Desktop links */}

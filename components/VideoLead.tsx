@@ -7,13 +7,20 @@ import { Reveal } from './Reveal'
 export function VideoLead() {
   const router = useRouter()
   const [email, setEmail] = useState('')
+  const [phone, setPhone] = useState('')
   const [loading, setLoading] = useState(false)
+  const [modalOpen, setModalOpen] = useState(false)
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault()
     setLoading(true)
-    // TODO: zapisz email do backendu
-    await new Promise(r => setTimeout(r, 600))
+    try {
+      await fetch('/api/lead', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, phone, source: 'wideo-lead' }),
+      })
+    } catch {}
     router.push('/dziekujemy')
   }
 
@@ -41,7 +48,7 @@ export function VideoLead() {
             </h2>
 
             <p className="text-text-main/55 text-[15px] leading-relaxed">
-              12 minut. Konkretna lista błędów, które większość hoteli popełnia — i dlaczego kosztują Cię dziesiątki tysięcy złotych rocznie.
+              12 minut. Konkretna lista błędów, które większość hoteli popełnia — i dlaczego kosztują Cię dziesiątki, setki, a może nawet miliony zł rocznie.
             </p>
           </Reveal>
 
@@ -61,14 +68,15 @@ export function VideoLead() {
                 <div className="absolute inset-0" style={{ background: 'rgba(5,0,10,0.45)' }} />
 
                 <div className="absolute inset-0 flex items-center justify-center">
-                  <div
-                    className="w-16 h-16 rounded-full flex items-center justify-center shadow-2xl"
+                  <button
+                    onClick={() => setModalOpen(true)}
+                    className="w-16 h-16 rounded-full flex items-center justify-center shadow-2xl hover:scale-110 transition-transform"
                     style={{ background: 'linear-gradient(135deg, #03ef23, #00bbf5)', boxShadow: '0 0 40px rgba(3,239,35,0.35)' }}
                   >
                     <svg width="22" height="22" viewBox="0 0 24 24" fill="none" style={{ marginLeft: '3px' }}>
                       <path d="M6 4l14 8-14 8V4z" fill="#05000a"/>
                     </svg>
-                  </div>
+                  </button>
                 </div>
 
                 <div className="absolute bottom-3 right-3 px-2.5 py-1 rounded-md text-[11px] font-bold text-white" style={{ background: 'rgba(0,0,0,0.7)' }}>
@@ -78,8 +86,8 @@ export function VideoLead() {
                 <div className="absolute bottom-0 left-0 right-0 p-4 pt-10" style={{ background: 'linear-gradient(to top, rgba(5,0,10,0.9), transparent)' }}>
                   <p className="text-white/40 text-[10px] uppercase tracking-widest mb-1">Łukasz Falba & Hubert Hurban</p>
                   <p className="text-white font-bold text-[13px] leading-snug">
-                    Dlaczego marketing w Twoim hotelu ssie?<br />
-                    <span className="gradient-text">I jak to naprawić.</span>
+                    Dlaczego marketing w Twoim hotelu nie działa?<br />
+                    <span className="gradient-text">I jak to zmienić.</span>
                   </p>
                 </div>
               </div>
@@ -120,6 +128,8 @@ export function VideoLead() {
                 />
                 <input
                   type="tel"
+                  value={phone}
+                  onChange={e => setPhone(e.target.value)}
                   placeholder="Numer telefonu"
                   className="w-full bg-white border border-gray1 rounded-xl text-text-main placeholder:text-gray3 px-5 py-4 text-[15px] focus:outline-none focus:border-violet/40 transition-colors"
                 />
@@ -128,17 +138,64 @@ export function VideoLead() {
                   disabled={loading}
                   className="gradient-btn font-bold text-[15px] py-4 rounded-xl shadow-lg shadow-brand-green/10 disabled:opacity-60 transition-opacity"
                 >
-                  {loading ? 'Chwila...' : 'Obejrzyj za darmo →'}
+                  {loading ? 'Chwila...' : 'Odbierz bezpłatne wideo →'}
                 </button>
               </form>
-              <p className="text-text-main/30 text-[12px] mt-3 text-center">
-                Jeden mail z linkiem. Zero spamu.
-              </p>
             </div>
           </Reveal>
 
         </div>
       </div>
+
+      {/* Modal */}
+      {modalOpen && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center p-4"
+          style={{ background: 'rgba(5,0,10,0.85)' }}
+          onClick={() => setModalOpen(false)}
+        >
+          <div
+            className="w-full max-w-sm bg-midnight border border-white/10 rounded-2xl p-7 relative"
+            onClick={e => e.stopPropagation()}
+          >
+            <button
+              onClick={() => setModalOpen(false)}
+              className="absolute top-4 right-4 text-white/30 hover:text-white/70 transition-colors text-xl leading-none"
+            >
+              ✕
+            </button>
+            <p className="text-[11px] font-bold uppercase tracking-[0.14em] text-white/30 mb-2">Bezpłatne wideo</p>
+            <h3 className="font-black text-white text-xl leading-tight mb-6">
+              Podaj dane,<br />
+              <span className="gradient-text">odbierz dostęp</span>
+            </h3>
+            <form onSubmit={handleSubmit} className="flex flex-col gap-3">
+              <input
+                type="email"
+                required
+                value={email}
+                onChange={e => setEmail(e.target.value)}
+                placeholder="Twój e-mail"
+                className="w-full bg-white/[0.07] border border-white/15 rounded-xl text-white placeholder:text-white/30 px-5 py-4 text-[15px] focus:outline-none focus:border-violet/50 transition-colors"
+              />
+              <input
+                type="tel"
+                value={phone}
+                onChange={e => setPhone(e.target.value)}
+                placeholder="Numer telefonu"
+                className="w-full bg-white/[0.07] border border-white/15 rounded-xl text-white placeholder:text-white/30 px-5 py-4 text-[15px] focus:outline-none focus:border-violet/50 transition-colors"
+              />
+              <button
+                type="submit"
+                disabled={loading}
+                className="gradient-btn font-bold text-[15px] py-4 rounded-xl shadow-lg shadow-brand-green/10 disabled:opacity-60 transition-opacity"
+              >
+                {loading ? 'Chwila...' : 'Odbierz bezpłatne wideo →'}
+              </button>
+            </form>
+          </div>
+        </div>
+      )}
     </section>
   )
 }

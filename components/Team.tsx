@@ -8,24 +8,24 @@ import { Reveal } from './Reveal'
 const members = [
   {
     name: 'Łukasz Falba',
-    role: 'Performance Marketing Director',
+    role: 'Strategy & Performance',
     photo: '/falba.png',
-    quote: 'W reklamach dla hoteli liczy się timing i precyzja. Każda złotówka musi przynosić rezerwacje.',
-    bio: '8 lat w reklamach online. Pracował w Polsce, Niemczech, UK, Brazylii i Afryce Zachodniej. Budował i ratował agencje. Wygenerował ponad 20 mln zł przychodów z reklam w ostatnich 2 latach.',
+    quote: 'Rozwiązuję problemy, których nie widać gołym okiem.',
+    bio: '10 lat w reklamach online. Pracował w Polsce, Niemczech, UK, Brazylii i Afryce Zachodniej. Budował i ratował agencje. Wygenerował ponad 20 mln zł przychodów z reklam w ostatnich 2 latach.',
     stats: [
-      { num: '20M+', label: 'zł przychodów' },
-      { num: '3000h+', label: 'szkoleń' },
-      { num: '50+', label: 'HORECA' },
+      { num: '10 lat', label: 'doświadczenia' },
+      { num: '50+', label: 'obiektów HORECA' },
+      { num: '2000h+', label: 'szkoleń' },
     ],
   },
   {
     name: 'Hubert Hurban',
-    role: 'Content & AI Specialist',
+    role: 'Content & AI',
     photo: '/hubi2.jpg',
-    quote: 'Działamy transparentnie do bólu - dlatego klienci zostają z nami na lata.',
-    bio: 'Na własnych social mediach generuje 8 mln+ zasięgu miesięcznie. Projektuje automatyzacje AI oszczędzające tysiące złotych dziennie. Specjalizacja: content który faktycznie sprzedaje.',
+    quote: 'Skupiam się na content marketingu, wykorzystaniu AI i projektowaniu efektywnych procesów.',
+    bio: 'Na własnych social mediach wygenerował 10 mln+ zasięgu na Instagramie. Projektuje automatyzacje AI oszczędzające tysiące złotych dziennie. Specjalizacja: content który faktycznie sprzedaje.',
     stats: [
-      { num: '8M+', label: 'zasięgu/mies.' },
+      { num: '10M+', label: 'zasięgu na IG', highlight: true },
       { num: '10 lat', label: 'doświadczenia' },
       { num: '8 zł', label: 'koszt leda' },
     ],
@@ -86,7 +86,7 @@ export function Team() {
                     <div className="flex gap-4 pt-4 mt-4 border-t border-gray1 flex-wrap">
                       {m.stats.map(s => (
                         <div key={s.label}>
-                          <div className="font-black text-violet text-lg leading-none mb-0.5">{s.num}</div>
+                          <div className={`font-black text-lg leading-none mb-0.5 ${'highlight' in s && s.highlight ? 'text-brand-green' : 'text-violet'}`}>{s.num}</div>
                           <div className="text-[10px] font-medium text-gray3 uppercase tracking-wider">{s.label}</div>
                         </div>
                       ))}
