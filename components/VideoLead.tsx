@@ -4,15 +4,36 @@ import { useState } from 'react'
 import { useRouter } from 'next/navigation'
 import { Reveal } from './Reveal'
 
+const consents = [
+  {
+    id: 'rodo',
+    text: 'Wyrażam zgodę na przetwarzanie moich danych osobowych przez 4WebZones sp. z o.o. w celu kontaktu i przedstawienia oferty, zgodnie z Polityką prywatności.',
+  },
+  {
+    id: 'telecom',
+    text: 'Wyrażam zgodę na używanie telekomunikacyjnych urządzeń końcowych (np. telefonu) przez 4WebZones sp. z o.o. w celu marketingu bezpośredniego zgodnie z art. 172 ustawy Prawo telekomunikacyjne.',
+  },
+  {
+    id: 'email',
+    text: 'Wyrażam zgodę na otrzymywanie informacji handlowych drogą elektroniczną od 4WebZones sp. z o.o. na podany adres e-mail, zgodnie z ustawą o świadczeniu usług drogą elektroniczną.',
+  },
+]
+
 export function VideoLead() {
   const router = useRouter()
   const [email, setEmail] = useState('')
   const [phone, setPhone] = useState('')
   const [loading, setLoading] = useState(false)
   const [modalOpen, setModalOpen] = useState(false)
+  const [checked, setChecked] = useState({ rodo: false, telecom: false, email: false })
+  const allChecked = checked.rodo && checked.telecom && checked.email
+
+  const toggle = (id: string) =>
+    setChecked(prev => ({ ...prev, [id]: !prev[id as keyof typeof prev] }))
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault()
+    if (!allChecked) return
     setLoading(true)
     try {
       await fetch('/api/lead', {
@@ -27,10 +48,10 @@ export function VideoLead() {
   return (
     <section className="bg-offwhite py-24 md:py-32 relative overflow-hidden">
       <div className="max-w-6xl mx-auto px-5 md:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-2 md:grid-rows-[auto_auto] gap-x-16 gap-y-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-10">
 
-          {/* TEXT - mobile: 1st, desktop: col 1 row 1 */}
-          <Reveal className="order-1 md:col-start-1 md:row-start-1">
+          {/* TEXT - mobile: 1st, desktop: col 1 */}
+          <Reveal className="order-1 md:col-start-1 flex flex-col justify-center">
             <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-violet/20 bg-violet/[0.06] mb-7">
               <span className="w-1.5 h-1.5 rounded-full bg-violet animate-pulse" />
               <span className="text-[11px] font-black uppercase tracking-[0.14em] text-violet/70">
@@ -47,13 +68,22 @@ export function VideoLead() {
               i jak to zmienić.
             </h2>
 
-            <p className="text-text-main/55 text-[15px] leading-relaxed">
+            <p className="text-text-main/55 text-[15px] leading-relaxed mb-8">
               12 minut. Konkretna lista błędów, które większość hoteli popełnia — i dlaczego kosztują Cię dziesiątki, setki, a może nawet miliony zł rocznie.
             </p>
+
+            <div>
+              <button
+                onClick={() => setModalOpen(true)}
+                className="gradient-btn font-bold text-[15px] px-8 py-4 rounded-xl shadow-lg shadow-brand-green/10"
+              >
+                Odbierz bezpłatne wideo →
+              </button>
+            </div>
           </Reveal>
 
-          {/* MOCKUP - mobile: 2nd, desktop: col 2 row 1+2 */}
-          <Reveal delay={120} className="order-2 md:col-start-2 md:row-start-1">
+          {/* MOCKUP - mobile: 2nd, desktop: col 2 */}
+          <Reveal delay={120} className="order-2 md:col-start-2">
             <div
               className="relative rounded-2xl overflow-hidden shadow-2xl"
               style={{ border: '1px solid rgba(255,255,255,0.08)' }}
@@ -114,36 +144,6 @@ export function VideoLead() {
             </div>
           </Reveal>
 
-          {/* FORM - mobile: 3rd, desktop: full width row 2 - centered */}
-          <Reveal delay={80} className="order-3 md:col-span-2 md:row-start-2 flex justify-center">
-            <div className="w-full max-w-sm">
-              <form onSubmit={handleSubmit} className="flex flex-col gap-3">
-                <input
-                  type="email"
-                  required
-                  value={email}
-                  onChange={e => setEmail(e.target.value)}
-                  placeholder="Twój e-mail"
-                  className="w-full bg-white border border-gray1 rounded-xl text-text-main placeholder:text-gray3 px-5 py-4 text-[15px] focus:outline-none focus:border-violet/40 transition-colors"
-                />
-                <input
-                  type="tel"
-                  value={phone}
-                  onChange={e => setPhone(e.target.value)}
-                  placeholder="Numer telefonu"
-                  className="w-full bg-white border border-gray1 rounded-xl text-text-main placeholder:text-gray3 px-5 py-4 text-[15px] focus:outline-none focus:border-violet/40 transition-colors"
-                />
-                <button
-                  type="submit"
-                  disabled={loading}
-                  className="gradient-btn font-bold text-[15px] py-4 rounded-xl shadow-lg shadow-brand-green/10 disabled:opacity-60 transition-opacity"
-                >
-                  {loading ? 'Chwila...' : 'Odbierz bezpłatne wideo →'}
-                </button>
-              </form>
-            </div>
-          </Reveal>
-
         </div>
       </div>
 
@@ -155,7 +155,7 @@ export function VideoLead() {
           onClick={() => setModalOpen(false)}
         >
           <div
-            className="w-full max-w-sm bg-midnight border border-white/10 rounded-2xl p-7 relative"
+            className="w-full max-w-sm bg-midnight border border-white/10 rounded-2xl p-7 relative overflow-y-auto max-h-[90vh]"
             onClick={e => e.stopPropagation()}
           >
             <button
@@ -183,10 +183,46 @@ export function VideoLead() {
                 placeholder="Numer telefonu"
                 className="w-full bg-white/[0.07] border border-white/15 rounded-xl text-white placeholder:text-white/30 px-5 py-4 text-[15px] focus:outline-none focus:border-violet/50 transition-colors"
               />
+
+              {/* Checkboxy zgód */}
+              <div className="flex flex-col gap-3 mt-1">
+                {consents.map(({ id, text }) => (
+                  <label key={id} className="flex items-start gap-3 cursor-pointer group">
+                    <div className="relative flex-shrink-0 mt-0.5">
+                      <input
+                        type="checkbox"
+                        required
+                        checked={checked[id as keyof typeof checked]}
+                        onChange={() => toggle(id)}
+                        className="sr-only"
+                      />
+                      <div
+                        className={`w-4 h-4 rounded border transition-colors ${
+                          checked[id as keyof typeof checked]
+                            ? 'bg-violet border-violet'
+                            : 'bg-white/[0.07] border-white/30 group-hover:border-white/55'
+                        }`}
+                      >
+                        {checked[id as keyof typeof checked] && (
+                          <svg className="w-4 h-4 text-white p-0.5" viewBox="0 0 16 16" fill="none">
+                            <path d="M3 8l3.5 3.5L13 4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                          </svg>
+                        )}
+                      </div>
+                    </div>
+                    <span className="text-[10px] text-white/45 leading-relaxed group-hover:text-white/65 transition-colors">
+                      {text}
+                    </span>
+                  </label>
+                ))}
+              </div>
+
               <button
                 type="submit"
-                disabled={loading}
-                className="gradient-btn font-bold text-[15px] py-4 rounded-xl shadow-lg shadow-brand-green/10 disabled:opacity-60 transition-opacity"
+                disabled={loading || !allChecked}
+                className={`gradient-btn font-bold text-[15px] py-4 rounded-xl shadow-lg shadow-brand-green/10 transition-opacity mt-1 ${
+                  allChecked && !loading ? 'opacity-100 cursor-pointer' : 'opacity-40 cursor-not-allowed'
+                }`}
               >
                 {loading ? 'Chwila...' : 'Odbierz bezpłatne wideo →'}
               </button>

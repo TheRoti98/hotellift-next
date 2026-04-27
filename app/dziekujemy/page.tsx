@@ -22,16 +22,52 @@ const packages = [
   },
 ]
 
+const consents = [
+  {
+    id: 'rodo',
+    text: 'Wyrażam zgodę na przetwarzanie moich danych osobowych przez 4WebZones sp. z o.o. w celu kontaktu i przedstawienia oferty, zgodnie z Polityką prywatności.',
+  },
+  {
+    id: 'telecom',
+    text: 'Wyrażam zgodę na używanie telekomunikacyjnych urządzeń końcowych (np. telefonu) przez 4WebZones sp. z o.o. w celu marketingu bezpośredniego zgodnie z art. 172 ustawy Prawo telekomunikacyjne.',
+  },
+  {
+    id: 'email',
+    text: 'Wyrażam zgodę na otrzymywanie informacji handlowych drogą elektroniczną od 4WebZones sp. z o.o. na podany adres e-mail, zgodnie z ustawą o świadczeniu usług drogą elektroniczną.',
+  },
+]
+
 export default function DziekujemyPage() {
   const [selectedPackage, setSelectedPackage] = useState('pro')
   const [submitted, setSubmitted] = useState(false)
   const [loading, setLoading] = useState(false)
+  const [fields, setFields] = useState({
+    imieNazwisko: '',
+    email: '',
+    obiekt: '',
+    telefon: '',
+    nip: '',
+  })
+  const [checked, setChecked] = useState({ rodo: false, telecom: false, email: false })
+  const allChecked = checked.rodo && checked.telecom && checked.email
+
+  const setField = (key: string, val: string) =>
+    setFields(prev => ({ ...prev, [key]: val }))
+
+  const toggle = (id: string) =>
+    setChecked(prev => ({ ...prev, [id]: !prev[id as keyof typeof prev] }))
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault()
+    if (!allChecked) return
     setLoading(true)
-    // TODO: podłącz endpoint (Formspree, Make, n8n itp.)
-    await new Promise(r => setTimeout(r, 1000))
+    try {
+      await fetch('/api/dziekujemy', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ ...fields, pakiet: selectedPackage, source: 'formularz-dziekujemy' }),
+      })
+    } catch {}
     setLoading(false)
     setSubmitted(true)
   }
@@ -76,7 +112,6 @@ export default function DziekujemyPage() {
               className="relative w-full rounded-2xl overflow-hidden shadow-2xl"
               style={{ paddingTop: '56.25%', border: '1px solid rgba(255,255,255,0.08)' }}
             >
-              {/* ↓ ZAMIEŃ src na właściwy link YouTube/Vimeo */}
               <iframe
                 className="absolute inset-0 w-full h-full"
                 src="https://www.youtube.com/embed/jNQXAC9IVRw"
@@ -136,6 +171,8 @@ export default function DziekujemyPage() {
                       type="text"
                       required
                       placeholder="Jan Kowalski"
+                      value={fields.imieNazwisko}
+                      onChange={e => setField('imieNazwisko', e.target.value)}
                       className="border border-gray1 rounded-xl px-4 py-3 text-[14px] text-text-main placeholder:text-gray3 focus:outline-none focus:border-violet/40 transition-colors"
                     />
                   </div>
@@ -145,6 +182,8 @@ export default function DziekujemyPage() {
                       type="email"
                       required
                       placeholder="jan@hotelkowalski.pl"
+                      value={fields.email}
+                      onChange={e => setField('email', e.target.value)}
                       className="border border-gray1 rounded-xl px-4 py-3 text-[14px] text-text-main placeholder:text-gray3 focus:outline-none focus:border-violet/40 transition-colors"
                     />
                   </div>
@@ -158,6 +197,8 @@ export default function DziekujemyPage() {
                       type="text"
                       required
                       placeholder="Hotel Przykładowy"
+                      value={fields.obiekt}
+                      onChange={e => setField('obiekt', e.target.value)}
                       className="border border-gray1 rounded-xl px-4 py-3 text-[14px] text-text-main placeholder:text-gray3 focus:outline-none focus:border-violet/40 transition-colors"
                     />
                   </div>
@@ -166,6 +207,8 @@ export default function DziekujemyPage() {
                     <input
                       type="tel"
                       placeholder="+48 600 000 000"
+                      value={fields.telefon}
+                      onChange={e => setField('telefon', e.target.value)}
                       className="border border-gray1 rounded-xl px-4 py-3 text-[14px] text-text-main placeholder:text-gray3 focus:outline-none focus:border-violet/40 transition-colors"
                     />
                   </div>
@@ -180,6 +223,8 @@ export default function DziekujemyPage() {
                     type="text"
                     placeholder="000-000-00-00"
                     maxLength={13}
+                    value={fields.nip}
+                    onChange={e => setField('nip', e.target.value)}
                     className="border border-gray1 rounded-xl px-4 py-3 text-[14px] text-text-main placeholder:text-gray3 focus:outline-none focus:border-violet/40 transition-colors md:w-1/2"
                   />
                 </div>
@@ -221,11 +266,46 @@ export default function DziekujemyPage() {
                   </div>
                 </div>
 
+                {/* Checkboxy zgód */}
+                <div className="flex flex-col gap-3 pt-1">
+                  {consents.map(({ id, text }) => (
+                    <label key={id} className="flex items-start gap-3 cursor-pointer group">
+                      <div className="relative flex-shrink-0 mt-0.5">
+                        <input
+                          type="checkbox"
+                          required
+                          checked={checked[id as keyof typeof checked]}
+                          onChange={() => toggle(id)}
+                          className="sr-only"
+                        />
+                        <div
+                          className={`w-4 h-4 rounded border transition-colors ${
+                            checked[id as keyof typeof checked]
+                              ? 'bg-violet border-violet'
+                              : 'bg-white border-gray1 group-hover:border-violet/40'
+                          }`}
+                        >
+                          {checked[id as keyof typeof checked] && (
+                            <svg className="w-4 h-4 text-white p-0.5" viewBox="0 0 16 16" fill="none">
+                              <path d="M3 8l3.5 3.5L13 4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                            </svg>
+                          )}
+                        </div>
+                      </div>
+                      <span className="text-[11px] text-text-main/50 leading-relaxed group-hover:text-text-main/70 transition-colors">
+                        {text}
+                      </span>
+                    </label>
+                  ))}
+                </div>
+
                 {/* Submit */}
                 <button
                   type="submit"
-                  disabled={loading}
-                  className="gradient-btn font-bold text-[15px] py-4 rounded-xl shadow-lg shadow-brand-green/10 mt-2 disabled:opacity-60 transition-opacity"
+                  disabled={loading || !allChecked}
+                  className={`gradient-btn font-bold text-[15px] py-4 rounded-xl shadow-lg shadow-brand-green/10 mt-2 transition-opacity ${
+                    allChecked && !loading ? 'opacity-100 cursor-pointer' : 'opacity-40 cursor-not-allowed'
+                  }`}
                 >
                   {loading ? 'Wysyłamy...' : 'Umów bezpłatną konsultację →'}
                 </button>
