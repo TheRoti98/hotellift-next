@@ -9,14 +9,6 @@ const consents = [
     id: 'rodo',
     text: 'Wyrażam zgodę na przetwarzanie moich danych osobowych przez 4WebZones sp. z o.o. w celu kontaktu i przedstawienia oferty, zgodnie z Polityką prywatności.',
   },
-  {
-    id: 'telecom',
-    text: 'Wyrażam zgodę na używanie telekomunikacyjnych urządzeń końcowych (np. telefonu) przez 4WebZones sp. z o.o. w celu marketingu bezpośredniego zgodnie z art. 172 ustawy Prawo telekomunikacyjne.',
-  },
-  {
-    id: 'email',
-    text: 'Wyrażam zgodę na otrzymywanie informacji handlowych drogą elektroniczną od 4WebZones sp. z o.o. na podany adres e-mail, zgodnie z ustawą o świadczeniu usług drogą elektroniczną.',
-  },
 ]
 
 export function VideoLead() {
@@ -25,8 +17,8 @@ export function VideoLead() {
   const [phone, setPhone] = useState('')
   const [loading, setLoading] = useState(false)
   const [modalOpen, setModalOpen] = useState(false)
-  const [checked, setChecked] = useState({ rodo: false, telecom: false, email: false })
-  const allChecked = checked.rodo && checked.telecom && checked.email
+  const [checked, setChecked] = useState({ rodo: false })
+  const allChecked = checked.rodo
 
   const toggle = (id: string) =>
     setChecked(prev => ({ ...prev, [id]: !prev[id as keyof typeof prev] }))
