@@ -20,17 +20,17 @@ const more = [
   {
     name: 'Hotel Solar',
     stars: '★★★★',
-    photo: 'https://www.solarspa.pl/_thumb/650x550x80/banery/hotel-z-zewnatrz-2200px/img_5007.jpg',
+    photo: '/hotelsolar.jpg',
   },
   {
     name: 'Restauracja M15 Sopot',
     stars: '',
-    photo: 'https://m15.sopot.pl/wp-content/uploads/2025/07/Zdjecie-glowne-podstrona-plaza-scaled.jpg',
+    photo: '/m15.webp',
   },
   {
     name: 'Hotel Innercity',
     stars: '★★★',
-    photo: 'https://wa-uploads.profitroom.com/hotelinnercity/16339029239558_innercityobiekt01.jpg',
+    photo: '/innercity.jpg',
   },
   {
     name: 'Restauracja Sirocco Olsztyn',
