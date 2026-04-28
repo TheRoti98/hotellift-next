@@ -153,7 +153,7 @@ function ProblemCard({ card }: { card: typeof cards[0] }) {
 
 export function ProblemsAlt() {
   return (
-    <section className="bg-offwhite py-24 md:py-32">
+    <section id="problemy" className="bg-offwhite py-24 md:py-32">
       <div className="max-w-7xl mx-auto px-5 md:px-8">
         <Reveal>
           <div className="mb-14">

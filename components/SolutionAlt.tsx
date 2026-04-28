@@ -95,7 +95,7 @@ export function SolutionAlt() {
   const { ref, visible } = useVisible(0.08)
 
   return (
-    <section className="bg-midnight py-24 md:py-32 relative overflow-hidden">
+    <section id="pakiety" className="bg-midnight py-24 md:py-32 relative overflow-hidden">
       <div className="absolute top-0 left-0 right-0 h-px bg-brand-gradient opacity-20" />
       <div
         className="absolute inset-0 pointer-events-none"
