@@ -114,7 +114,7 @@ export default function DziekujemyPage() {
             >
               <iframe
                 className="absolute inset-0 w-full h-full"
-                src="https://www.youtube.com/embed/jNQXAC9IVRw"
+                src="https://www.youtube.com/embed/dWfCUIxtP84"
                 title="Dlaczego marketing w Twoim hotelu ssie?"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowFullScreen
