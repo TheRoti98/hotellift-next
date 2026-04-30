@@ -99,13 +99,19 @@ export default function DziekujemyPage() {
               style={{ fontSize: 'clamp(2rem, 5vw, 3.75rem)' }}
             >
               Dlaczego marketing<br />
-              <span className="gradient-text">w Twoim hotelu ssie?</span><br />
+              <span className="gradient-text">w Twoim hotelu nie działa?</span><br />
               I jak to zmienić?
             </h1>
 
-            <p className="text-white/40 text-[16px] leading-relaxed mb-12 max-w-xl mx-auto">
-              Obejrzyj to wideo zanim przejdziesz dalej — odpowie na większość Twoich pytań.
-            </p>
+            <div
+              className="inline-flex items-center gap-3 px-5 py-3.5 rounded-xl mb-12"
+              style={{ background: 'rgba(3,239,35,0.08)', border: '1px solid rgba(3,239,35,0.22)' }}
+            >
+              <span className="w-2 h-2 rounded-full bg-brand-green flex-shrink-0 animate-pulse" />
+              <p className="text-white/80 text-[15px] leading-relaxed font-medium">
+                Obejrzyj to wideo zanim przejdziesz dalej — odpowie na większość Twoich pytań.
+              </p>
+            </div>
 
             {/* Video embed */}
             <div
