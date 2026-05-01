@@ -1,6 +1,7 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
+import Script from 'next/script'
 import { Footer } from '@/components/Footer'
 
 const packages = [
@@ -38,12 +39,6 @@ const consents = [
 ]
 
 export default function DziekujemyPage() {
-  useEffect(() => {
-    if (typeof window !== 'undefined' && (window as any).fbq) {
-      ;(window as any).fbq('track', 'CompleteRegistration')
-    }
-  }, [])
-
   const [selectedPackage, setSelectedPackage] = useState('pro')
   const [submitted, setSubmitted] = useState(false)
   const [loading, setLoading] = useState(false)
@@ -334,6 +329,9 @@ export default function DziekujemyPage() {
 
       </main>
       <Footer />
+      <Script id="fb-complete-registration" strategy="afterInteractive">
+        {`fbq('track', 'CompleteRegistration');`}
+      </Script>
     </>
   )
 }
