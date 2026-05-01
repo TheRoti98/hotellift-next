@@ -1,7 +1,6 @@
 'use client'
 
 import { useState } from 'react'
-import Script from 'next/script'
 import { Footer } from '@/components/Footer'
 
 const packages = [
@@ -329,9 +328,6 @@ export default function DziekujemyPage() {
 
       </main>
       <Footer />
-      <Script id="fb-complete-registration" strategy="afterInteractive">
-        {`fbq('track', 'CompleteRegistration');`}
-      </Script>
     </>
   )
 }
