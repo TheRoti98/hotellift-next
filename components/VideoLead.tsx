@@ -170,6 +170,7 @@ export function VideoLead() {
               />
               <input
                 type="tel"
+                required
                 value={phone}
                 onChange={e => setPhone(e.target.value)}
                 placeholder="Numer telefonu"

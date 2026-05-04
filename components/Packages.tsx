@@ -162,6 +162,7 @@ export function Packages() {
                         <label className="text-[11px] font-bold uppercase tracking-wider text-text-main/40">Telefon</label>
                         <input
                           type="tel"
+                          required
                           placeholder="+48 600 000 000"
                           className="border border-gray1 rounded-xl px-4 py-3 text-[14px] text-text-main placeholder:text-gray3 focus:outline-none focus:border-violet/40 transition-colors"
                         />

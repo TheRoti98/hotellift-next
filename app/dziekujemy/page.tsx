@@ -212,6 +212,7 @@ export default function DziekujemyPage() {
                     <label className="text-[12px] font-semibold uppercase tracking-wider text-text-main/50">Telefon</label>
                     <input
                       type="tel"
+                      required
                       placeholder="+48 600 000 000"
                       value={fields.telefon}
                       onChange={e => setField('telefon', e.target.value)}
@@ -227,6 +228,7 @@ export default function DziekujemyPage() {
                   </label>
                   <input
                     type="text"
+                    required
                     placeholder="000-000-00-00"
                     maxLength={13}
                     value={fields.nip}
