@@ -224,7 +224,7 @@ export default function DziekujemyPage() {
                 {/* NIP */}
                 <div className="flex flex-col gap-1.5">
                   <label className="text-[12px] font-semibold uppercase tracking-wider text-text-main/50">
-                    NIP <span className="text-text-main/30 normal-case tracking-normal font-normal">(opcjonalnie — potrzebny do wystawienia faktury)</span>
+                    NIP
                   </label>
                   <input
                     type="text"
