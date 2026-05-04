@@ -218,6 +218,19 @@ export function ProblemsCost() {
             </p>
           </Reveal>
 
+          <Reveal delay={500}>
+            <a
+              href="#konsultacja"
+              className="inline-flex items-center gap-3 gradient-btn px-8 py-4 rounded-xl font-bold shadow-lg shadow-brand-green/20 mt-10"
+              style={{ fontSize: '15px' }}
+            >
+              Chcę odzyskać te pieniądze
+              <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
+                <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
+            </a>
+          </Reveal>
+
         </div>
       </div>
     </section>
