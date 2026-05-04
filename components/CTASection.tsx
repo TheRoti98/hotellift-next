@@ -69,7 +69,7 @@ export function CTASection() {
           <p className="section-tag justify-center !text-white/40 before:bg-white/20">Zaczynamy</p>
           <h2 className="font-black text-white leading-tight tracking-tight mb-10" style={{ fontSize: 'clamp(2rem, 4vw, 3rem)' }}>
             Sprawdźmy,<br />
-            <span className="gradient-text">czy możemy ci pomóc</span>
+            <span className="gradient-text">czy możemy Ci pomóc</span>
           </h2>
         </Reveal>
 
