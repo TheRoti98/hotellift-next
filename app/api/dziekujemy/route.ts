@@ -14,7 +14,7 @@ const transporter = nodemailer.createTransport({
 export async function POST(req: NextRequest) {
   const body = await req.json()
 
-  const webhookUrl = process.env.WEBHOOK_DZIEKUJEMY
+  const webhookUrl = process.env.WEBHOOK_S2
   const webhookPromise = webhookUrl
     ? fetch(webhookUrl, {
         method: 'POST',
