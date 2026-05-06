@@ -19,6 +19,7 @@ export default function Page() {
       <Nav />
       <main>
         <Hero />
+        <VideoLead />
         <ProblemsAlt />
         <ProblemsCost />
         <BridgeAlt3 />
@@ -27,7 +28,6 @@ export default function Page() {
         <SolutionAlt />
         <ProcessAlt />
         <TeamAlt />
-        <VideoLead />
         <FAQ />
         <CTASection />
       </main>
